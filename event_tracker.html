@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #eventList { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Event Tracker</h1>
+    <form id="eventForm">
+        <input type="text" id="eventInput" placeholder="Enter event" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="eventList">
+        <h2>Events:</h2>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        document.getElementById('eventForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const eventInput = document.getElementById('eventInput');
+            const eventValue = eventInput.value.trim();
+
+            if (eventValue) {
+                const listItem = document.createElement('li'); // Create a new list item
+                listItem.textContent = eventValue; // Set the text content to the event value
+                document.getElementById('list').appendChild(listItem); // Add the list item to the event list
+
+                eventInput.value = ''; // Clear the input field
+            }
+        });
+    </script>
+</body>
+</html>
